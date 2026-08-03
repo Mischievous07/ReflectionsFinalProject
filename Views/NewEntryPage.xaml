@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Reflections.Views.NewEntryPage"
+    Title="New Journal Entry">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="18">
+
+            <Label
+                FontSize="30"
+                FontAttributes="Bold"
+                Text="New Journal Entry" />
+
+            <Entry
+                Placeholder="Entry Title"
+                Text="{Binding Title}" />
+
+            <DatePicker
+                Date="{Binding SelectedDate}" />
+
+            <Picker
+                Title="Select Mood"
+                ItemsSource="{Binding Moods}"
+                SelectedItem="{Binding SelectedMood}" />
+
+            <Editor
+                HeightRequest="250"
+                Placeholder="Write about your day..."
+                AutoSize="TextChanges"
+                Text="{Binding Content}" />
+
+            <Label
+                HorizontalOptions="End"
+                Text="{Binding CharacterCount, StringFormat='Characters: {0}'}"
+                TextColor="Gray" />
+
+            <Grid
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10">
+
+                <Button
+                    Grid.Column="0"
+                    Clicked="Clear_Clicked"
+                    Text="Clear" />
+
+                <Button
+                    Grid.Column="1"
+                    Clicked="Save_Clicked"
+                    Text="Save Entry" />
+
+            </Grid>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

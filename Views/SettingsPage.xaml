@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Reflections.Views.SettingsPage"
+    Title="Settings">
+
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            Padding="20"
+            Spacing="25">
+
+
+            <Label
+                Text="Settings"
+                FontSize="32"
+                FontAttributes="Bold"/>
+
+
+
+            <Frame
+                Padding="15"
+                CornerRadius="12">
+
+
+                <VerticalStackLayout
+                    Spacing="15">
+
+
+                    <Label
+                        Text="Preferences"
+                        FontSize="22"
+                        FontAttributes="Bold"/>
+
+
+                    <HorizontalStackLayout>
+
+                        <Label
+                            Text="Dark Mode"
+                            VerticalOptions="Center"
+                            HorizontalOptions="StartAndExpand"/>
+
+
+                        <Switch
+                            IsToggled="{Binding DarkModeEnabled}"/>
+
+                    </HorizontalStackLayout>
+
+
+
+                    <HorizontalStackLayout>
+
+                        <Label
+                            Text="Reminders"
+                            VerticalOptions="Center"
+                            HorizontalOptions="StartAndExpand"/>
+
+
+                        <Switch
+                            IsToggled="{Binding NotificationsEnabled}"/>
+
+                    </HorizontalStackLayout>
+
+
+                </VerticalStackLayout>
+
+
+            </Frame>
+
+
+
+
+            <Frame
+                Padding="15"
+                CornerRadius="12">
+
+
+                <VerticalStackLayout
+                    Spacing="10">
+
+
+                    <Label
+                        Text="About"
+                        FontSize="22"
+                        FontAttributes="Bold"/>
+
+
+                    <Label
+                        Text="Reflections is a simple personal journaling application created with .NET MAUI."/>
+
+
+
+                    <Label
+                        Text="{Binding AppVersion}"
+                        TextColor="Gray"/>
+
+
+                </VerticalStackLayout>
+
+
+            </Frame>
+
+
+        </VerticalStackLayout>
+
+
+    </ScrollView>
+
+
+</ContentPage>
