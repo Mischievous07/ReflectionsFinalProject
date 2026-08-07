@@ -1,43 +1,53 @@
-﻿using System.ComponentModel;
+﻿using Reflections.Services;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Reflections.ViewModels;
 
 public class SettingsViewModel : INotifyPropertyChanged
 {
-    private bool darkModeEnabled;
-    private bool notificationsEnabled;
+    private readonly SettingsService settingsService;
+
+    private bool isDarkMode;
 
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
 
-    public bool DarkModeEnabled
+    public SettingsViewModel(SettingsService settingsService)
     {
-        get => darkModeEnabled;
+        this.settingsService = settingsService;
+
+        IsDarkMode = settingsService.IsDarkMode;
+    }
+
+
+    public bool IsDarkMode
+    {
+        get => isDarkMode;
 
         set
         {
-            darkModeEnabled = value;
+            if (isDarkMode == value)
+                return;
+
+            isDarkMode = value;
+
+            settingsService.IsDarkMode = value;
+
+            ApplyTheme();
+
             OnPropertyChanged();
         }
     }
 
-
-    public bool NotificationsEnabled
+    private void ApplyTheme()
     {
-        get => notificationsEnabled;
-
-        set
-        {
-            notificationsEnabled = value;
-            OnPropertyChanged();
-        }
+        Application.Current!.UserAppTheme =
+            IsDarkMode
+            ? AppTheme.Dark
+            : AppTheme.Light;
     }
-
-
-    public string AppVersion =>
-        "Version 1.0";
 
 
     private void OnPropertyChanged(

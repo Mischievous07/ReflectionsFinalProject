@@ -8,50 +8,65 @@
 
     <Application.Resources>
 
-
         <ResourceDictionary>
 
-
-            <Style
-                TargetType="Button">
-
-                <Setter
-                    Property="CornerRadius"
-                    Value="12"/>
-
-                <Setter
-                    Property="FontSize"
-                    Value="16"/>
-
-            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
 
+            <Style TargetType="Label">
 
-            <Style
-                TargetType="Entry">
-
-                <Setter
-                    Property="FontSize"
-                    Value="16"/>
+                <Setter Property="TextColor"
+                    Value="{AppThemeBinding 
+                    Light={StaticResource LightTextColor},
+                    Dark={StaticResource DarkTextColor}}" />
 
             </Style>
 
 
+            <Style TargetType="ContentPage">
 
-            <Style
-                TargetType="Editor">
+                <Setter Property="BackgroundColor"
+                    Value="{AppThemeBinding 
+                    Light={StaticResource LightBackgroundColor},
+                    Dark={StaticResource DarkBackgroundColor}}" />
 
-                <Setter
-                    Property="FontSize"
-                    Value="16"/>
+            </Style>
+
+
+            <Style TargetType="Entry">
+
+                <Setter Property="TextColor"
+                    Value="{AppThemeBinding 
+                    Light={StaticResource LightTextColor},
+                    Dark={StaticResource DarkTextColor}}" />
+
+            </Style>
+
+
+            <Style TargetType="Editor">
+
+                <Setter Property="TextColor"
+                    Value="{AppThemeBinding 
+                    Light={StaticResource LightTextColor},
+                    Dark={StaticResource DarkTextColor}}" />
+
+            </Style>
+
+
+            <Style TargetType="SearchBar">
+
+                <Setter Property="TextColor"
+                    Value="{AppThemeBinding 
+                    Light={StaticResource LightTextColor},
+                    Dark={StaticResource DarkTextColor}}" />
 
             </Style>
 
 
         </ResourceDictionary>
 
-
     </Application.Resources>
-
 
 </Application>

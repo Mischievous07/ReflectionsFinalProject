@@ -25,6 +25,7 @@
             <Button
                 Text="New Journal Entry"
                 FontSize="18"
+                TextColor="White"
                 HeightRequest="50"
                 Clicked="NewEntry_Clicked"/>
 
@@ -49,8 +50,10 @@
                         <Border
                             Margin="0,5"
                             Padding="15"
+                            Stroke="{AppThemeBinding Light=Black, Dark=White}"
+                            StrokeThickness="1"
                             StrokeShape="RoundRectangle 10">
-                        
+                            
                             <VerticalStackLayout>
 
                                 <Label

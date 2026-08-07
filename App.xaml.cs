@@ -11,5 +11,23 @@
         {
             return new Window(new AppShell());
         }
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            ApplySavedTheme();
+        }
+
+
+        private void ApplySavedTheme()
+        {
+            bool darkMode = Preferences.Get(
+                "dark_mode",
+                false);
+
+            UserAppTheme = darkMode
+                ? AppTheme.Dark
+                : AppTheme.Light;
+        }
     }
 }

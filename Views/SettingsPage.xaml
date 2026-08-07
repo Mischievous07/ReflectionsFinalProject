@@ -1,85 +1,74 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Reflections.Views.SettingsPage"
-    Title="Settings">
-
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Reflections.Views.SettingsPage"
+             Title="Settings">
 
     <ScrollView>
 
         <VerticalStackLayout
-            Padding="20"
+            Padding="25"
             Spacing="25">
 
 
             <Label
                 Text="Settings"
                 FontSize="32"
-                FontAttributes="Bold"/>
-
+                FontAttributes="Bold"
+                HorizontalOptions="Center"/>
 
 
             <Border
-                Padding="15"
-                StrokeShape="RoundRectangle 12">
-
+                Padding="20"
+                Stroke="{AppThemeBinding Light=Black, Dark=White}"
+                StrokeThickness="1.5"
+                StrokeShape="RoundRectangle 15">
 
                 <VerticalStackLayout
                     Spacing="15">
 
 
                     <Label
-                        Text="Preferences"
+                        Text="Appearance"
                         FontSize="22"
                         FontAttributes="Bold"/>
 
 
-                    <HorizontalStackLayout>
+                    <HorizontalStackLayout
+                        HorizontalOptions="Fill"
+                        Spacing="20">
+
 
                         <Label
                             Text="Dark Mode"
+                            FontSize="18"
                             VerticalOptions="Center"
                             HorizontalOptions="StartAndExpand"/>
 
 
                         <Switch
-                            IsToggled="{Binding DarkModeEnabled}"/>
+                            IsToggled="{Binding IsDarkMode, Mode=TwoWay}"
+                            Toggled="DarkMode_Toggled"/>
 
-                    </HorizontalStackLayout>
-
-
-
-                    <HorizontalStackLayout>
-
-                        <Label
-                            Text="Reminders"
-                            VerticalOptions="Center"
-                            HorizontalOptions="StartAndExpand"/>
-
-
-                        <Switch
-                            IsToggled="{Binding NotificationsEnabled}"/>
 
                     </HorizontalStackLayout>
 
 
                 </VerticalStackLayout>
 
-
             </Border>
 
 
 
-
             <Border
-                Padding="15"
-                StrokeShape="RoundRectangle 12">
+                Padding="20"
+                Stroke="{AppThemeBinding Light=Black, Dark=White}"
+                StrokeThickness="1"
+                StrokeShape="RoundRectangle 15">
 
 
                 <VerticalStackLayout
-                    Spacing="10">
+                    Spacing="15">
 
 
                     <Label
@@ -89,13 +78,19 @@
 
 
                     <Label
-                        Text="Reflections is a simple personal journaling application created with .NET MAUI."/>
-
+                        Text="Reflections"
+                        FontSize="20"
+                        FontAttributes="Bold"/>
 
 
                     <Label
-                        Text="{Binding AppVersion}"
-                        TextColor="Gray"/>
+                        Text="A simple journaling application built using .NET MAUI. Users can create, edit, and manage personal journal entries stored locally on their device."
+                        LineBreakMode="WordWrap"/>
+
+
+                    <Label
+                        Text="Version 1.0"
+                        FontSize="14"/>
 
 
                 </VerticalStackLayout>
@@ -104,10 +99,38 @@
             </Border>
 
 
+
+            <Border
+                Padding="20"
+                Stroke="{AppThemeBinding Light=Black, Dark=White}"
+                StrokeThickness="1.5"
+                StrokeShape="RoundRectangle 15">
+
+
+                <VerticalStackLayout
+                    Spacing="15">
+
+
+                    <Label
+                        Text="Data"
+                        FontSize="22"
+                        FontAttributes="Bold"/>
+
+
+                    <Label
+                        Text="Journal entries are stored locally using SQLite."
+                        LineBreakMode="WordWrap"/>
+
+
+                </VerticalStackLayout>
+
+
+            </Border>
+
+
+
         </VerticalStackLayout>
 
-
     </ScrollView>
-
 
 </ContentPage>

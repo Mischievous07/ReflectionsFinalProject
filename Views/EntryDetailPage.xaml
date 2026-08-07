@@ -28,6 +28,8 @@
 
             <Border
                 Padding="10"
+                Stroke="{AppThemeBinding Light=Black, Dark=White}"
+                StrokeThickness="1"
                 StrokeShape="RoundRectangle 10">
 
                 <Label

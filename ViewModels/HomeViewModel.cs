@@ -1,8 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using Reflections.Models;
+using Reflections.Services;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Reflections.Models;
-using Reflections.Services;
 
 namespace Reflections.ViewModels;
 

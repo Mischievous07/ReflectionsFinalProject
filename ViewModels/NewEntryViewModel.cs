@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Reflections.Models;
+﻿using Reflections.Models;
 using Reflections.Services;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Reflections.ViewModels;
 

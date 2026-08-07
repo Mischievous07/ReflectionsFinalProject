@@ -8,7 +8,7 @@ public partial class AppShell : Shell
 
         Routing.RegisterRoute(nameof(Views.EntryDetailPage),
             typeof(Views.EntryDetailPage));
-        Routing.RegisterRoute(nameof(Views.NewEntryPage), 
+        Routing.RegisterRoute(nameof(Views.NewEntryPage),
             typeof(Views.NewEntryPage));
     }
 }
