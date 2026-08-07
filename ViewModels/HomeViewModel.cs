@@ -1,36 +1,92 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Reflections.Models;
+using Reflections.Services;
 
 namespace Reflections.ViewModels;
 
-public class HomeViewModel
+public class HomeViewModel : INotifyPropertyChanged
 {
+    private readonly DatabaseService databaseService;
+
+    private List<JournalEntry> allEntries = new();
+
+    private string searchText = string.Empty;
+
     public ObservableCollection<JournalEntry> Entries { get; } = new();
 
-    public HomeViewModel()
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+
+    public HomeViewModel(DatabaseService databaseService)
     {
-        Entries.Add(new JournalEntry
-        {
-            Id = 1,
-            Title = "A Productive Day",
-            Content = "Today I made great progress on my MAUI project.",
-            DateCreated = DateTime.Now.AddDays(-1)
-        });
+        this.databaseService = databaseService;
+    }
 
-        Entries.Add(new JournalEntry
-        {
-            Id = 2,
-            Title = "Weekend Thoughts",
-            Content = "Looking forward to relaxing and spending time with family.",
-            DateCreated = DateTime.Now.AddDays(-2)
-        });
 
-        Entries.Add(new JournalEntry
+    public string SearchText
+    {
+        get => searchText;
+
+        set
         {
-            Id = 3,
-            Title = "New Goals",
-            Content = "I want to journal more consistently this month.",
-            DateCreated = DateTime.Now.AddDays(-5)
-        });
+            searchText = value;
+
+            OnPropertyChanged();
+
+            FilterEntries();
+        }
+    }
+
+
+    public async Task LoadEntriesAsync()
+    {
+        allEntries = (await databaseService.GetEntriesAsync())
+        .OrderByDescending(x => x.DateCreated)
+        .ToList();
+
+        FilterEntries();
+    }
+
+
+    private void FilterEntries()
+    {
+        Entries.Clear();
+
+        IEnumerable<JournalEntry> filteredEntries = allEntries;
+
+
+        if (!string.IsNullOrWhiteSpace(SearchText))
+        {
+            filteredEntries = allEntries.Where(entry =>
+                entry.Title.Contains(
+                    SearchText,
+                    StringComparison.OrdinalIgnoreCase)
+                ||
+                entry.Content.Contains(
+                    SearchText,
+                    StringComparison.OrdinalIgnoreCase)
+                ||
+                entry.Mood.Contains(
+                    SearchText,
+                    StringComparison.OrdinalIgnoreCase));
+        }
+
+
+        foreach (JournalEntry entry in filteredEntries)
+        {
+            Entries.Add(entry);
+        }
+    }
+
+
+    private void OnPropertyChanged(
+        [CallerMemberName] string? propertyName = null)
+    {
+        PropertyChanged?.Invoke(
+            this,
+            new PropertyChangedEventArgs(propertyName));
     }
 }

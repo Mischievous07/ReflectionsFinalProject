@@ -26,15 +26,15 @@
                 FontSize="16"/>
 
 
-            <Frame
+            <Border
                 Padding="10"
-                CornerRadius="10">
+                StrokeShape="RoundRectangle 10">
 
                 <Label
                     Text="{Binding Mood}"
                     FontSize="18"/>
 
-            </Frame>
+            </Border>
 
 
             <Label

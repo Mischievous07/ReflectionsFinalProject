@@ -21,9 +21,9 @@
 
 
 
-            <Frame
+            <Border
                 Padding="15"
-                CornerRadius="12">
+                StrokeShape="RoundRectangle 12">
 
 
                 <VerticalStackLayout
@@ -68,14 +68,14 @@
                 </VerticalStackLayout>
 
 
-            </Frame>
+            </Border>
 
 
 
 
-            <Frame
+            <Border
                 Padding="15"
-                CornerRadius="12">
+                StrokeShape="RoundRectangle 12">
 
 
                 <VerticalStackLayout
@@ -101,7 +101,7 @@
                 </VerticalStackLayout>
 
 
-            </Frame>
+            </Border>
 
 
         </VerticalStackLayout>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Reflections.ViewModels;
 using Reflections.Views;
+using Reflections.Services;
 
 namespace Reflections;
 
@@ -33,6 +34,8 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<SettingsPage>();
         builder.Services.AddSingleton<SettingsViewModel>();
+
+        builder.Services.AddSingleton<DatabaseService>();
 
         return builder.Build();
     }
